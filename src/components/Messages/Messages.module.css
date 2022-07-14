@@ -1,0 +1,24 @@
+.dialogs {
+    display:grid;
+    grid-template-columns: 2fr 10fr;
+}
+
+.ditems  {
+    padding: 10px;
+}
+.message  {
+    padding: 10px;
+    font-size: 25px;
+}
+
+.message2  {
+    padding: 10px;
+    font-size: 10px;
+}
+
+
+
+.dialog  {
+    font-size: 26px;
+}
+

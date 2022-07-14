@@ -1,0 +1,19 @@
+.nav {
+    grid-area: n;
+    background-color: pink;
+    padding: 20px;
+    font-size: 25px;
+    font-family: 'Times New Roman', Times, serif;
+    
+  
+  }
+.item  {
+  color: black;
+  text-decoration: none;
+}
+
+.active  {
+  color: rgb(190, 88, 15);
+}
+
+  

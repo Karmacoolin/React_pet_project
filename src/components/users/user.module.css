@@ -1,0 +1,19 @@
+.item img {
+
+    width: 100px;
+    height: 100px;
+    border-radius: 60px;
+    
+    }
+
+.item {
+    font-size: 26px;
+ }
+
+ .item button {
+     font-size: 25px;
+ }
+
+ .selectedPage {
+     font-weight: bold;
+ }
