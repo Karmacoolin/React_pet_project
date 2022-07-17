@@ -5,15 +5,15 @@ import { BrowserRouter, Route, Routes,  } from 'react-router-dom';
 import News from './components/News/News';
 import Music from './components/Music/Music';
 import Settings from './components/Settings/Settings';
-import MessagesContainer from './components/Messages/MessagesContainer';
-import UsersContainer from './components/users/usersContainer';
-import ProfileContainer from './components/Profile/ProfileContainer';
 import Login from './components/Login/Login';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app-reducer';
 import Preloader from './components/common/preloader';
 import { Component } from 'react';
+const ProfileContainer = React.lazy(()=> import ('./components/Profile/ProfileContainer'))
+const UsersContainer = React.lazy(()=> import ('./components/users/usersContainer'))
+const MessagesContainer = React.lazy(()=> import ('./components/Messages/MessagesContainer'))
 
 class App extends Component {
     componentDidMount() {
@@ -31,6 +31,7 @@ class App extends Component {
                     <HeaderContainer />
                     <Navbar />
                     <div className='app-wrapper-content'>
+                    <Suspense fallback={<div><Preloader /></div>}>
                         <Routes>
                             <Route exact path='/messages' element={<MessagesContainer />} />
                             <Route path='/profile/:userId' element={<ProfileContainer />} />
@@ -41,6 +42,7 @@ class App extends Component {
                             <Route exact path='settings' element={<Settings />} />
                             <Route exact path='/login' element={<Login />} />
                         </Routes>
+                        </Suspense>
                     </div>
                 </div>
             </BrowserRouter>

@@ -3,11 +3,12 @@ import { userApi, followApi } from "../api/api";
 let initialState = {
 
     users: [],
-    pageSize: 5,
+    pageSize: 10,
     totalUsersCount: 20,
     currentPage: 1,
     isFetching: false,
-    followingInProgress: [2, 3]
+    followingInProgress: [2, 3],
+    portionSize: 10
 
 
 
