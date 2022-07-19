@@ -1,7 +1,8 @@
 .header {
   grid-area: h;
   background-color: red;
-
+  font-weight: bold;
+ 
 
 }
 
@@ -15,4 +16,5 @@
 
 .loginBlock a {
   color: white;
+  
 }

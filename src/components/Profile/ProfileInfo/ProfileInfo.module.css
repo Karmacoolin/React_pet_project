@@ -3,6 +3,8 @@
   }
 .avatar {
     padding: 10px;
+    max-width: 200px;
+    max-height: 300px;
 }
 .headerimg img {
     width: 1200px;

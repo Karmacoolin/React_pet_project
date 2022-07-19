@@ -14,6 +14,57 @@
      font-size: 25px;
  }
 
- .selectedPage {
-     font-weight: bold;
+ .pageNumber.selectedPage {
+    font-weight: bold;
+    border-color: black;
+    font-size: x-large;
+    
+}
+
+ .pageNumber {
+    border-radius: 5px; 
+    padding: 2px;
+    border: 1px solid grey;
  }
+ .pageNumber:hover {
+    background-color: #f10a0a;
+    box-shadow: 0 5px #666;
+ }
+
+
+ .button {
+    background-color: white;
+    font-size: large;
+    border-radius: 12px;
+    
+   
+    transition-duration: 0.4s;
+    cursor: pointer;
+ }
+
+ .button:hover {
+    background-color: #f10a0a;
+    box-shadow: 0 5px #666;
+}
+
+.button:active {
+  background-color: #f90707;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+.ubutton {
+    font-weight: bolder;
+    background-color: #f10a0a;
+    color: white;
+    
+}
+
+.fbutton {
+    background-color: white;
+    
+}
+
+.paginator {
+    border-radius: 20px;
+}

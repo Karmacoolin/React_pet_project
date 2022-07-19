@@ -7,8 +7,10 @@ let initialState = {
         { id: 1, message: 'Hey braza!', likesCount: 12 },
         { id: 2, message: 'Holy 123', likesCount: 56 }
     ],
-    profile: { photos: {} },
-    status: ""
+    profile:  null, 
+    status: "",
+
+
 
 };
 
@@ -30,6 +32,9 @@ const profileReducer = (state = initialState, action) => {
 
                 return { ...state, status: action.status }
             }
+            case 'SET-PHOTO': {
+                return { ...state, profile: {...state.profile, photos: action.photos}}
+            }
 
 
         default: return state;
@@ -40,9 +45,12 @@ const profileReducer = (state = initialState, action) => {
 export let addPostActionCreator = (newPost) => ({ type: 'ADD-POST', newPost })
 export const setUserProfile = (profile) => ({ type: 'SET-USER-PROFILE', profile })
 export const setStatus = (status) => ({ type: 'SET-STATUS', status })
+export const setPhotoSuccess = (photos) => ({ type: 'SET-PHOTO', photos})
 
 export const userProfileThunk = (userId) => async (dispatch) => {
+    
     let responce = await profileApi.getProfile(userId)
+    debugger
     dispatch(setUserProfile(responce.data));
 }
 
@@ -58,5 +66,21 @@ export const updateStatus = (status) => async (dispatch) => {
         dispatch(setStatus(status));
     }
 }
+
+export const savePhoto = (file) => async (dispatch) => {
+    let responce = await profileApi.savePhoto(file)
+    if (responce.data.resultCode === 0) {
+        dispatch(setPhotoSuccess(responce.data.data.photos));
+    }
+}
+
+export const saveProfile = (profile) => async (dispatch, getState) => {
+  const userId = getState().auth.userId
+    let responce = await profileApi.saveProfile(profile)
+    if (responce.data.resultCode === 0) {
+        dispatch(userProfileThunk(userId));
+    }
+}
+
 
 export default profileReducer;

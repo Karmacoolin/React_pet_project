@@ -11,7 +11,7 @@
 
   
 
-  grid-template-rows: 60px 1fr;
+  grid-template-rows: 50px 1fr;
   grid-template-columns: 2fr 10fr;
   grid-gap: 10px;
 
@@ -19,7 +19,7 @@
 
 .app-wrapper-content {
 
-background-color: rgba(230, 219, 219, 0.793) ;  
+background-color: white ;  
 width: 1200px;
 
 }

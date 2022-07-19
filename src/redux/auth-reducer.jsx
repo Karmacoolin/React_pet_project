@@ -1,11 +1,12 @@
 import { stopSubmit } from "redux-form";
-import { authApi } from "../api/api";
+import { authApi, securityApi } from "../api/api";
 
 let initialState = {
     userId: null,
     email: null,
     login: null,
-    isAuth: false
+    isAuth: false,  
+    capthcaUrl: null
 };
 
 const authReducer = (state = initialState, action) => {
@@ -15,6 +16,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload,
             }
+            case 'GET-CAPTCHA':
+                return {
+                    ...state,
+                    ...action.payload,
+                }
         default: return state;
     }
 }
@@ -27,11 +33,14 @@ export const authUser = () => async (dispatch) => {
     }
 }
 
-export const login = (email, password, rememberMe) => async (dispatch) => {
-    let responce = await authApi.login(email, password, rememberMe);
+export const login = (email, password, rememberMe, captcha) => async (dispatch) => {
+    let responce = await authApi.login(email, password, rememberMe, captcha);
     if (responce.data.resultCode === 0) {
         dispatch(authUser())
-    } else {
+    } else   {
+        if (responce.data.resultCode === 10) {
+            dispatch(getCapthcaUrl());
+        }
         let message = responce.data.messages.length > 0 ? responce.data.messages[0] : 'Something wrong';
         dispatch(stopSubmit("login", { _error: message }));
     }
@@ -48,4 +57,18 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({
     type: 'SET-USER-DATA',
     payload: { userId, email, login, isAuth }
 });
+
+export const getCapthca = (capthcaUrl) => ({
+    type: 'GET-CAPTCHA',
+    payload: { capthcaUrl }
+});
+
+export const getCapthcaUrl = () => async (dispatch) => {
+    let responce = await securityApi.getCaptchaUrl();
+    debugger
+  const capthcaUrl =  responce.data.url;
+  dispatch (getCapthca (capthcaUrl))
+}
+
+
 export default authReducer;
