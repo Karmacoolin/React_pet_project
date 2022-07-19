@@ -28,7 +28,7 @@ class App extends Component {
         }
 
         return (
-            <BrowserRouter >
+            <HashRouter >
                 <div className='app-wrapper'>
                     <HeaderContainer />
                     <Navbar />
@@ -49,7 +49,7 @@ class App extends Component {
                         </Suspense>
                     </div>
                 </div>
-            </BrowserRouter>
+            </HashRouter>
         );
     }
 }

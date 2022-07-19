@@ -10,3 +10,24 @@
     width: 1200px;
     height: 300px;
 }  
+
+.button {
+    background-color: white;
+    font-size: large;
+    border-radius: 12px;
+    
+   
+    transition-duration: 0.4s;
+    cursor: pointer;
+ }
+
+ .button:hover {
+    background-color: #f10a0a;
+    box-shadow: 0 5px #666;
+}
+
+.button:active {
+  background-color: #f90707;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
