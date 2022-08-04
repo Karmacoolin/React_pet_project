@@ -1,8 +1,7 @@
 import { Field, Form, reduxForm } from "redux-form";
-import { required } from '../../../utilits/validators/validators';
 import { Input } from '../../common/Form/Form';
 import { Textarea } from './../../common/Form/Form';
-const ProfileDataForm = ({ profile, handleSubmit }) => {
+const ProfileDataForm = ({ handleSubmit }) => {
     return <Form onSubmit={handleSubmit}>
         <div><button>save</button></div>
 
@@ -26,11 +25,6 @@ const ProfileDataForm = ({ profile, handleSubmit }) => {
                 name={'aboutMe'} component={Textarea} />
         </div>
         <div>
-
-            {/*  <b>Contacts:</b> {Object.keys(profile.contacts).map(key => {
-  
-          return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]} />
-        })} */}
         </div>
     </Form>
 }

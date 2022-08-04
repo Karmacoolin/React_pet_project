@@ -5,7 +5,7 @@ let initialState = {
     userId: null,
     email: null,
     login: null,
-    isAuth: false,  
+    isAuth: false,
     capthcaUrl: null
 };
 
@@ -16,11 +16,11 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 ...action.payload,
             }
-            case 'GET-CAPTCHA':
-                return {
-                    ...state,
-                    ...action.payload,
-                }
+        case 'GET-CAPTCHA':
+            return {
+                ...state,
+                ...action.payload,
+            }
         default: return state;
     }
 }
@@ -37,7 +37,7 @@ export const login = (email, password, rememberMe, captcha) => async (dispatch) 
     let responce = await authApi.login(email, password, rememberMe, captcha);
     if (responce.data.resultCode === 0) {
         dispatch(authUser())
-    } else   {
+    } else {
         if (responce.data.resultCode === 10) {
             dispatch(getCapthcaUrl());
         }
@@ -66,8 +66,8 @@ export const getCapthca = (capthcaUrl) => ({
 export const getCapthcaUrl = () => async (dispatch) => {
     let responce = await securityApi.getCaptchaUrl();
     debugger
-  const capthcaUrl =  responce.data.url;
-  dispatch (getCapthca (capthcaUrl))
+    const capthcaUrl = responce.data.url;
+    dispatch(getCapthca(capthcaUrl))
 }
 
 

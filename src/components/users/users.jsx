@@ -10,7 +10,8 @@ let Users = (props) => {
 
     return <div>
         <Paginator currentPage={props.currentPage} onPageChanged={props.onPageChanged}
-            totalItemsCount={props.totalUsersCount} pageSize={props.pageSize} portionSize={props.portionSize} />
+            totalItemsCount={props.totalUsersCount} pageSize={props.pageSize}
+            portionSize={props.portionSize} />
 
         {
             props.users.map(u => <div className={s.item}>
@@ -22,9 +23,11 @@ let Users = (props) => {
                     </div>
                     <div>
                         {u.followed
-                            ? <button className={s.fbutton}  disabled={props.followingInProgress.some(id => id === u.id)}
+                            ? <button className={s.fbutton}
+                                disabled={props.followingInProgress.some(id => id === u.id)}
                                 onClick={() => { props.unfollow(u.id); }}>Unfollow</button>
-                            : <button className={s.ubutton} disabled={props.followingInProgress.some(id => id === u.id)}
+                            : <button className={s.ubutton}
+                                disabled={props.followingInProgress.some(id => id === u.id)}
                                 onClick={() => { props.follow(u.id); }}>Follow</button>}
 
                     </div>

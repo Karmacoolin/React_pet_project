@@ -4,7 +4,7 @@ import s from './Navbar.module.css';
 const Navbar = () => {
     return <nav className= {s.nav}>
     <div>
-      <NavLink to="/profile" className = { NavData => NavData.isActive ? s.active : s.item }>Profile</NavLink>
+      <NavLink to="/profile/24571" className = { NavData => NavData.isActive ? s.active : s.item }>Profile</NavLink>
       </div>
 
       <div>

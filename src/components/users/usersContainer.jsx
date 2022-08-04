@@ -13,7 +13,7 @@ const UsersContainer = (props) => {
         props.getUsers(props.currentPage, props.pageSize);
     }, []);
 
-   const onPageChanged = (pageNumber) => {
+    const onPageChanged = (pageNumber) => {
         props.setCurrentPage(pageNumber);
         props.getUsers(pageNumber, props.pageSize);
     }

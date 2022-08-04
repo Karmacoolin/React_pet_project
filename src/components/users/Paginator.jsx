@@ -18,31 +18,31 @@ let Paginator = (props) => {
     let [portionNumber, setPortionNumber] = useState(1);
     let leftPortionPageNumber = (portionNumber - 1) * props.portionSize + 1;
     let rightPortionPageNumber = portionNumber * props.portionSize;
-    
-    return ( 
-    <div className={s.paginator} >
-        
-        { portionNumber > 1 &&
-        <button className={s.button} onClick={() => { setPortionNumber(portionNumber - 1) }}>PREV</button> }
 
-            {pages.filter(p => p >= leftPortionPageNumber && p<=rightPortionPageNumber)
+    return (
+        <div className={s.paginator} >
+
+            {portionNumber > 1 &&
+                <button className={s.button} onClick={() => { setPortionNumber(portionNumber - 1) }}>
+                    PREV</button>}
+
+            {pages.filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                 .map((p) => {
-                return <span className={ cn({
-                    [s.selectedPage]: props.currentPage === p
-                }, s.pageNumber)}
-                             key={p}
-                             onClick={(e) => {
-                                 props.onPageChanged(p);
-                             }}>{p}</span>
+                    return <span className={cn({
+                        [s.selectedPage]: props.currentPage === p
+                    }, s.pageNumber)}
+                        key={p}
+                        onClick={(e) => {
+                            props.onPageChanged(p);
+                        }}>{p}</span>
 
-            })}
-            { portionCount > portionNumber &&
-            <button className={s.button} onClick={() => { setPortionNumber(portionNumber + 1) }}>NEXT</button> }
+                })}
+            {portionCount > portionNumber &&
+                <button className={s.button} onClick={() => { setPortionNumber(portionNumber + 1) }}>
+                    NEXT</button>}
 
         </div>
-        )
-
-        
+    )
 };
 
 export default Paginator;

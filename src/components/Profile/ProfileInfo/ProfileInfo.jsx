@@ -7,13 +7,11 @@ import Preloader from "../../common/preloader";
 
 const ProfileInfo = (props) => {
 
-
-  
   let [editMode, setEditMode] = useState(false);
 
   if (!props.profile) {
-    return <Preloader/>
-}
+    return <Preloader />
+  }
 
   const mainPhotoSelected = (e) => {
     if (e.target.files.length)
@@ -23,7 +21,7 @@ const ProfileInfo = (props) => {
   const onSubmit = (formData) => {
     props.saveProfile(formData);
     setEditMode(false)
-}
+  }
 
   return (
     <div>
@@ -31,23 +29,16 @@ const ProfileInfo = (props) => {
       <div >
         {props.isOwner && <input type={"file"} onChange={mainPhotoSelected} />}
       </div>
-{editMode ? <ProfileDataForm initialValues={props.profile} onSubmit = {onSubmit} /> 
-: <ProfileData profile={props.profile} isOwner={props.isOwner} goToEditMode={()=>{setEditMode(true)}}/> }
+      {editMode ? <ProfileDataForm initialValues={props.profile} onSubmit={onSubmit} />
+        : <ProfileData profile={props.profile} isOwner={props.isOwner} goToEditMode={() => { setEditMode(true) }} />}
       <ProfileStatusHooks status={props.status} updateStatus={props.updateStatus} />
-
-
-
-
     </div>
-
   )
 }
 
-const ProfileData = ({ profile, isOwner, goToEditMode }) => {
-  
+const ProfileData = ({ profile, isOwner, goToEditMode, }) => {
   return <div>
-    
-{isOwner && <div><button className={s.button} onClick={goToEditMode} >edit</button></div>}
+    {isOwner && <div><button className={s.button} onClick={goToEditMode} >edit</button></div>}
     <div>
       <b>Full name:</b> {profile.fullName}
     </div>
@@ -64,7 +55,7 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
     </div>
     <div>
 
-    {/* <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
+      {/* <b>Contacts</b>: {Object.keys(profile.contacts).map(key => {
             return <Contact key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
         })} */}
     </div>
@@ -72,7 +63,6 @@ const ProfileData = ({ profile, isOwner, goToEditMode }) => {
 }
 
 const Contact = (contactTitle, contactValue) => {
-  
   return <div><b>{contactTitle}</b>:{contactValue}</div>
 }
 

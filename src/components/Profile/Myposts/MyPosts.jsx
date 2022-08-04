@@ -17,10 +17,8 @@ const MyPosts = React.memo(props => {
     props.addPost(values.newPost)
   }
 
-
   return <div className={s.MyPosts}>
     <h3>My Posts</h3>
-
     <MyPostReduxForm onSubmit={addNewPost} />
     <div>
       {postElements}

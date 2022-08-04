@@ -6,7 +6,6 @@ let initialState = {
     { id: 3, name: "Svetov" },
     { id: 4, name: "Barsik" },
     { id: 5, name: "Alinka" }
-
   ],
   messageData: [
     { id: 1, message: "Hi!", likesCount: 12 },
@@ -31,10 +30,7 @@ const messagesReducer = (state = initialState, action) => {
       }
 
     default: return state;
-
-
   }
-
 }
 export let addMessActionCreator = (newMessText) => ({ type: 'ADD-MESS', newMessText })
 
